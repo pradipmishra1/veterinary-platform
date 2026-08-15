@@ -25,10 +25,10 @@ export default function SiteHeader({
         </a>
       </div>
 
-      <span className="logo-badge">V</span> SupposeVeterinary
+      <header className="site">
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
           <div className="logo">
-            <span className="logo-badge">V</span> Veterinary
+            <span className="logo-badge">V</span> SupposeVeterinary
           </div>
           <nav className="site" style={{ display: "flex" }}>
             <a href="/" style={{ marginLeft: 0, color: active === "shop" ? "var(--green-dark)" : undefined, fontWeight: active === "shop" ? 700 : 500 }}>
