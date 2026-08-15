@@ -22,7 +22,8 @@ export async function POST(req: NextRequest) {
   const filename = `${crypto.randomUUID()}.${ext}`;
 
   const blob = await put(filename, file, {
-    access: "public"
+    access: "public",
+    storeId: process.env.BLOP_STORE_ID
   });
 
   return NextResponse.json({ url: blob.url }, { status: 201 });
