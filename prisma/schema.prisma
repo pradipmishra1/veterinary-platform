@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  category    String?
+  price       Decimal  @db.Decimal(10, 2)
+  stock       Int      @default(0)
+  description String?
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FinanceEntry {
+  id          String      @id @default(cuid())
+  type        FinanceType
+  description String
+  category    String?
+  amount      Decimal     @db.Decimal(10, 2)
+  date        DateTime
+  createdAt   DateTime    @default(now())
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Service {
+  id          String    @id @default(cuid())
+  name        String
+  category    String?
+  price       Decimal   @db.Decimal(10, 2)
+  durationMin Int?
+  description String?
+  imageUrl    String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookings    Booking[]
+}
+
+model Booking {
+  id            String        @id @default(cuid())
+  serviceId     String
+  ownerName     String
+  phone         String
+  petName       String
+  preferredDate DateTime
+  notes         String?
+  status        BookingStatus @default(pending)
+  createdAt     DateTime      @default(now())
+  service       Service       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+}
+
+enum FinanceType {
+  income
+  expense
+}
+
+enum BookingStatus {
+  pending
+  confirmed
+  completed
+  cancelled
+}
