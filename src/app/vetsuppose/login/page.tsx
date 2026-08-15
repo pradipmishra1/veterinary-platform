@@ -38,7 +38,7 @@ export default function LoginPage() {
     <>
       <header className="site">
         <div className="logo">
-          <span className="logo-badge">V</span> Veterinary
+          <span className="logo-badge">V</span> SupposeVeterinary
         </div>
         <nav className="site">
           <a href="/">Back to shop</a>

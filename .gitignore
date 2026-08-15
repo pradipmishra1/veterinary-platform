@@ -5,3 +5,5 @@
 /public/uploads/*
 !/public/uploads/.gitkeep
 *.log
+.vercel
+.env*

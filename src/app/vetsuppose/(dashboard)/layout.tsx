@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <>
       <header className="site">
         <div className="logo">
-          <span className="logo-badge">V</span> Veterinary{" "}
+          <span className="logo-badge">V</span> SupposeVeterinary{" "}
           <span style={{ fontSize: 12, color: "var(--muted)", fontWeight: 500 }}>Admin</span>
         </div>
         <nav className="site" style={{ display: "flex", alignItems: "center" }}>

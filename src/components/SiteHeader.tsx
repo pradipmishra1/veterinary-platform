@@ -25,7 +25,7 @@ export default function SiteHeader({
         </a>
       </div>
 
-      <header className="site">
+      <span className="logo-badge">V</span> SupposeVeterinary
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
           <div className="logo">
             <span className="logo-badge">V</span> Veterinary
