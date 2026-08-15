@@ -3,7 +3,13 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SupposeVeterinary",
-  description: "Products and clinic management for SupposeVeterinary"
+  description: "Products and clinic management for SupposeVeterinary",
+  manifest: "/manifest.json",
+  themeColor: "#1d7a5f",
+  icons: {
+    icon: "/icons/icon-192.png",
+    apple: "/icons/icon-192.png"
+  }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
