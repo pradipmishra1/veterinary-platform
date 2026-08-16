@@ -2,7 +2,7 @@
   "name": "SupposeVeterinary",
   "short_name": "SupposeVet",
   "description": "Veterinary clinic shop, services, and appointment booking",
-  "start_url": "/",
+  "start_url": "/vetsuppose",
   "display": "standalone",
   "background_color": "#f6f7f5",
   "theme_color": "#1d7a5f",
