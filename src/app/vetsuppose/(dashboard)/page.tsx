@@ -75,13 +75,41 @@ export default async function AdminOverviewPage() {
       <p className="sub">A full snapshot of your clinic</p>
 
       <div className="row">
-        <div className="stat"><div className="label">Products listed</div><div className="value">{productCount}</div></div>
-        <div className="stat"><div className="label">Services listed</div><div className="value">{serviceCount}</div></div>
-        <div className="stat"><div className="label">Total income</div><div className="value" style={{ color: "var(--green-dark)" }}>{formatPrice(income)}</div></div>
-        <div className="stat"><div className="label">Total expenses</div><div className="value" style={{ color: "var(--danger)" }}>{formatPrice(expense)}</div></div>
-        <div className="stat"><div className="label">Net</div><div className="value">{formatPrice(income - expense)}</div></div>
-        <div className="stat"><div className="label">Pending appointments</div><div className="value">{pendingBookings}</div></div>
-        <div className="stat"><div className="label">Total appointments</div><div className="value">{totalBookings}</div></div>
+        <div className="stat">
+          <div className="stat-icon blue">📦</div>
+          <div className="label">Products listed</div>
+          <div className="value">{productCount}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon green">💰</div>
+          <div className="label">Total income</div>
+          <div className="value" style={{ color: "var(--green-dark)" }}>{formatPrice(income)}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon red">📉</div>
+          <div className="label">Total expenses</div>
+          <div className="value" style={{ color: "var(--danger)" }}>{formatPrice(expense)}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon purple">📅</div>
+          <div className="label">Pending appointments</div>
+          <div className="value">{pendingBookings}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon orange">🩺</div>
+          <div className="label">Services listed</div>
+          <div className="value">{serviceCount}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon green">📊</div>
+          <div className="label">Net</div>
+          <div className="value">{formatPrice(income - expense)}</div>
+        </div>
+        <div className="stat">
+          <div className="stat-icon purple">✅</div>
+          <div className="label">Total appointments</div>
+          <div className="value">{totalBookings}</div>
+        </div>
       </div>
 
       <OverviewCharts months={months} categoryData={categoryData} />
