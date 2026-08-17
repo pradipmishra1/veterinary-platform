@@ -668,3 +668,113 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 }
 .schedule-badge.upcoming { background: var(--green-light); color: var(--green-dark); }
 .schedule-badge.tomorrow { background: #fef3e2; color: #c2760c; }
+/* ---------- Premium mobile dashboard v2 ---------- */
+.premium-stat {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(20,90,69,0.06);
+  animation: fadeInUp 0.4s ease both;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.premium-stat:active { transform: scale(0.97); }
+.premium-stat-icon {
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.premium-stat-icon.blue { background: #e8f0fe; }
+.premium-stat-icon.green { background: var(--green-light); }
+.premium-stat-icon.red { background: var(--danger-bg); }
+.premium-stat-icon.purple { background: #f0e8fd; }
+.premium-stat .p-value { font-size: 22px; font-weight: 800; color: var(--text); line-height: 1.1; }
+.premium-stat .p-label { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+.schedule-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 2px 10px rgba(20,90,69,0.06);
+  animation: fadeInUp 0.4s ease 0.15s both;
+}
+.schedule-card h3 {
+  padding: 12px 14px 6px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.schedule-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: background 0.15s ease;
+  animation: fadeIn 0.3s ease both;
+}
+.schedule-row:hover { background: #fafcfa; }
+.pet-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--green-light);
+  color: var(--green-dark);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.schedule-row .info { flex: 1; min-width: 0; }
+.schedule-row .pet-name { font-weight: 600; font-size: 14px; }
+.schedule-row .pet-meta { font-size: 12px; color: var(--muted); }
+.schedule-row .time-col { text-align: right; flex-shrink: 0; }
+.schedule-row .time-val { font-size: 12.5px; font-weight: 600; color: var(--text); }
+.upcoming-pill {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--green-dark);
+  background: var(--green-light);
+  padding: 2px 9px;
+  border-radius: 20px;
+  margin-top: 3px;
+}
+
+/* Header with bell */
+.dash-header-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--green-dark), var(--green));
+  color: #fff;
+}
+.dash-header-v2 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+.dash-header-v2 .brand-badge {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: #fff; color: var(--green-dark);
+  display: flex; align-items: center; justify-content: center; font-weight: 800;
+}
+.dash-header-v2 .bell {
+  position: relative;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.dash-header-v2 .bell-dot {
+  position: absolute; top: 6px; right: 7px;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #ff6b6b; border: 2px solid var(--green-dark);
+}
+
+@media (max-width: 768px) {
+  .premium-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+}
+.mobile-only-header { display: none; }
+@media (max-width: 768px) {
+  .mobile-only-header { display: flex; }
+  .desktop-only-header { display: none; }
+}
