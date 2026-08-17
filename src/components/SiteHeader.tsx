@@ -30,13 +30,14 @@ export default function SiteHeader({
           <div className="logo">
             <span className="logo-badge">V</span> SupposeVeterinary
           </div>
-          <nav className="site" style={{ display: "flex" }}>
+         <nav className="site" style={{ display: "flex" }}>
             <a href="/" style={{ marginLeft: 0, color: active === "shop" ? "var(--green-dark)" : undefined, fontWeight: active === "shop" ? 700 : 500 }}>
               Shop
             </a>
             <a href="/services" style={{ color: active === "services" ? "var(--green-dark)" : undefined, fontWeight: active === "services" ? 700 : 500 }}>
               Services
             </a>
+            <a href="/vetsuppose">Admin</a>
           </nav>
         </div>
       </header>
