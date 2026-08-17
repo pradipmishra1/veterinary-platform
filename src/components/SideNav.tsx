@@ -3,12 +3,11 @@
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/vetsuppose", label: "Overview" },
-  { href: "/vetsuppose/products", label: "Products" },
-  { href: "/vetsuppose/services", label: "Services" },
-  { href: "/vetsuppose/bookings", label: "Appointments" },
-  { href: "/vetsuppose/clients", label: "Clients" },
-  { href: "/vetsuppose/finance", label: "Income & expenses" }
+  { href: "/vetsuppose", label: "Overview", icon: "🏠" },
+  { href: "/vetsuppose/products", label: "Products", icon: "📦" },
+  { href: "/vetsuppose/services", label: "Services", icon: "🩺" },
+  { href: "/vetsuppose/bookings", label: "Appointments", icon: "📅" },
+  { href: "/vetsuppose/finance", label: "Finance", icon: "💰" }
 ];
 
 export default function SideNav() {
@@ -20,7 +19,8 @@ export default function SideNav() {
           link.href === "/vetsuppose" ? pathname === "/vetsuppose" : pathname.startsWith(link.href);
         return (
           <a key={link.href} href={link.href} className={active ? "active" : ""}>
-            {link.label}
+            <span className="nav-icon">{link.icon}</span>
+            <span className="nav-label">{link.label}</span>
           </a>
         );
       })}
