@@ -13,7 +13,8 @@ export default async function AdminBookingsPage() {
   const serializable = bookings.map((b) => ({
     ...b,
     preferredDate: b.preferredDate.toISOString().slice(0, 10),
-    service: { name: b.service.name, price: Number(b.service.price) }
+    createdAt: b.createdAt.toISOString(),
+    service: b.service ? { name: b.service.name, price: Number(b.service.price) } : null
   }));
 
   const pendingCount = bookings.filter((b) => b.status === "pending").length;

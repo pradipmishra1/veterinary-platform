@@ -10,7 +10,7 @@ type Booking = {
   preferredDate: string;
   notes: string | null;
   status: "pending" | "confirmed" | "completed" | "cancelled";
-  service: { name: string; price: number };
+  service: { name: string; price: number } | null;
 };
 
 const statusColors: Record<string, string> = {
@@ -183,7 +183,7 @@ export default function BookingsCalendar({ bookings }: { bookings: Booking[] }) 
                 <tr key={b.id}>
                   <td>{b.ownerName}</td>
                   <td>{b.petName}</td>
-                  <td>{b.service.name}</td>
+                  <td>{b.service?.name ?? "General appointment"}</td>
                   <td>{b.phone}</td>
                   <td>
                     <span style={{ display: "flex", alignItems: "center", gap: 5, textTransform: "capitalize" }}>

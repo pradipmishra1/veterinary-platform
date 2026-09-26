@@ -3,19 +3,9 @@
 import { useState } from "react";
 import BookingsTable from "@/components/BookingsTable";
 import BookingsCalendar from "@/components/BookingsCalendar";
+import type { AdminBooking } from "@/lib/types";
 
-type Booking = {
-  id: string;
-  ownerName: string;
-  phone: string;
-  petName: string;
-  preferredDate: string;
-  notes: string | null;
-  status: "pending" | "confirmed" | "completed" | "cancelled";
-  service: { name: string; price: number };
-};
-
-export default function BookingsCalendarWrapper({ bookings }: { bookings: Booking[] }) {
+export default function BookingsCalendarWrapper({ bookings }: { bookings: AdminBooking[] }) {
   const [view, setView] = useState<"list" | "calendar">("list");
 
   return (

@@ -1,3 +1,5 @@
+import { formatDateTime } from "@/lib/format";
+
 type BookingAlertData = {
   ownerName: string;
   phone: string;
@@ -6,7 +8,6 @@ type BookingAlertData = {
   preferredDate: string;
   notes?: string | null;
 };
-
 export async function sendBookingAlert(data: BookingAlertData) {
   const sid = process.env.TWILIO_ACCOUNT_SID;
   const token = process.env.TWILIO_AUTH_TOKEN;
@@ -24,7 +25,7 @@ export async function sendBookingAlert(data: BookingAlertData) {
     await client.messages.create({
       from: `whatsapp:${from}`,
       to: `whatsapp:${to}`,
-      body: `New appointment request\nOwner: ${data.ownerName}\nPhone: ${data.phone}\nPet: ${data.petName}\nService: ${data.serviceName}\nDate: ${data.preferredDate}\nNotes: ${data.notes || "-"}`
+      body: `New appointment request\nOwner: ${data.ownerName}\nPhone: ${data.phone}\nPet: ${data.petName}\nService: ${data.serviceName}\nWhen: ${formatDateTime(data.preferredDate)}\nNotes: ${data.notes || "-"}`
     });
   } catch (err) {
     console.error("WhatsApp alert failed:", err);

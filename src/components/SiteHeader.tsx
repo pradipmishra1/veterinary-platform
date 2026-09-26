@@ -1,50 +1,81 @@
-export default function SiteHeader({
-  title,
-  subtitle,
-  active
-}: {
-  title: string;
-  subtitle: string;
-  active: "shop" | "services";
-}) {
+"use client";
+
+import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { site, telHref, whatsappHref } from "@/lib/site";
+import { CartButton } from "@/components/CartDrawer";
+import { IconMenu, IconX, IconPhone, IconWhatsApp } from "@/components/Icons";
+
+const navLinks = [
+  { href: "/", label: "Shop" },
+  { href: "/services", label: "Clinic care" },
+  { href: "/about", label: "Our approach" },
+  { href: "/contact", label: "Visit us" }
+];
+
+export default function SiteHeader() {
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const isCurrent = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+
   return (
     <>
-      <div
-        style={{
-          background: "var(--danger)",
-          color: "#fff",
-          textAlign: "center",
-          padding: "8px 16px",
-          fontSize: 13,
-          fontWeight: 600
-        }}
-      >
-        🚨 Emergency? Call us now:{" "}
-        <a href="tel:+9779808486381" style={{ color: "#fff", textDecoration: "underline" }}>
-          +977 9808486381
-        </a>
+      <div className="emergency-bar">
+        <span className="dot" />
+        <span>Pet emergency? We answer 24/7 —</span>
+        <a href={telHref}>{site.phone}</a>
       </div>
 
       <header className="site">
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          <div className="logo">
-            <span className="logo-badge">V</span> SupposeVeterinary
-          </div>
-         <nav className="site" style={{ display: "flex" }}>
-            <a href="/" style={{ marginLeft: 0, color: active === "shop" ? "var(--green-dark)" : undefined, fontWeight: active === "shop" ? 700 : 500 }}>
-              Shop
+        <a href="/" className="logo" aria-label={`${site.name} home`}>
+          <span className="logo-badge">V</span>
+          <span className="logo-copy"><strong>{site.name}</strong><small>Pet shop &amp; veterinary clinic</small></span>
+        </a>
+
+        <nav className="site" aria-label="Main">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href} aria-current={isCurrent(l.href) ? "page" : undefined}>
+              {l.label}
             </a>
-            <a href="/services" style={{ color: active === "services" ? "var(--green-dark)" : undefined, fontWeight: active === "services" ? 700 : 500 }}>
-              Services
-            </a>
-            <a href="/vetsuppose">Admin</a>
-          </nav>
+          ))}
+        </nav>
+
+        <div className="header-right">
+          <a
+            className="btn btn-primary btn-sm"
+            href={whatsappHref(`Hello ${site.name}, I have a question about my pet.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IconWhatsApp /> <span>WhatsApp</span>
+          </a>
+          <CartButton />
+          <button
+            className="nav-toggle"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+          >
+            {menuOpen ? <IconX /> : <IconMenu />}
+          </button>
         </div>
       </header>
 
-      <div className="hero">
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
+      <div className={`nav-drawer${menuOpen ? " open" : ""}`}>
+        {navLinks.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            aria-current={isCurrent(l.href) ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
+            {l.label}
+          </a>
+        ))}
+        <a className="mobile-emergency-link" href={telHref}>
+          <IconPhone /> {site.phone}
+        </a>
       </div>
     </>
   );

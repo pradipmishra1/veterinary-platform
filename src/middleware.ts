@@ -34,8 +34,9 @@ export async function middleware(req: NextRequest) {
   if (isProtectedApi && req.method === "GET" && (pathname.startsWith("/api/products") || pathname.startsWith("/api/services"))) {
     return NextResponse.next();
   }
-  // Public write: customers can submit a booking without logging in
-  if (pathname.startsWith("/api/bookings") && req.method === "POST") {
+  // Public write: customers can submit a booking without logging in. Exact path only —
+  // `/api/bookings/<id>` must stay behind the session check.
+  if (pathname === "/api/bookings" && req.method === "POST") {
     return NextResponse.next();
   }
 
